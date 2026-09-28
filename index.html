@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe | Smart Attendance Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Chart.js for Visual Tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="container">
+        <header>
+            <h1>Attendance <span class="highlight">Navigator</span></h1>
+            <p>Plan your semester. Avoid detention. Stay in the green.</p>
+        </header>
+
+        <main>
+            <!-- 1. Load Data -->
+            <section class="card upload-section">
+                <h2>1. Load Timetable</h2>
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" accept=".json">
+                    <label for="fileInput" id="fileLabel">Upload timetables.json</label>
+                </div>
+            </section>
+
+            <!-- 2. Setup -->
+            <section class="card setup-section hidden fade-in" id="setupSection">
+                <h2>2. Select Section</h2>
+                <select id="sectionSelect">
+                    <option value="" disabled selected>Select your section...</option>
+                </select>
+
+                <h2 style="margin-top: 1.5rem;">3. OD & Leave Simulator</h2>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.9rem;">
+                    Input future On-Duty (OD) or Medical Leave days. These will automatically count as 'Attended'.
+                </p>
+                <div class="od-inputs">
+                    <input type="date" id="odStart" min="2026-09-29" max="2026-11-29" title="Start Date">
+                    <input type="date" id="odEnd" min="2026-09-29" max="2026-11-29" title="End Date">
+                    <button id="addOdBtn" class="btn-secondary">Add Leave</button>
+                </div>
+                <div id="odList" class="od-list"></div>
+
+                <h2 style="margin-top: 1.5rem;">4. Planning Date (Optional)</h2>
+                <input type="date" id="planDate" min="2026-09-29" max="2026-11-29">
+            </section>
+
+            <!-- 3. Current Attendance -->
+            <section class="card subjects-section hidden fade-in" id="subjectsSection">
+                <h2>5. Current Attendance (%)</h2>
+                <div id="subjectsList" class="subjects-list"></div>
+                <button id="calculateBtn" class="btn-primary">Calculate Future</button>
+            </section>
+
+            <!-- 4. Results & Charts -->
+            <section class="results-section hidden fade-in" id="resultsSection">
+                <h2 style="font-size: 2rem; border: none; text-align: center; margin-bottom: 1rem;">Your Health Overview</h2>
+                
+                <div class="card chart-container" style="margin-bottom: 2rem;">
+                    <canvas id="healthChart"></canvas>
+                </div>
+
+                <div id="resultsList" class="results-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Floating Chatbot -->
+    <div class="chatbot-wrapper">
+        <button id="chatToggle" class="chat-toggle">💬 Advisor</button>
+        <div id="chatPanel" class="chat-panel hidden">
+            <div class="chat-header">
+                <h3>AI Attendance Advisor</h3>
+                <button id="chatClose">×</button>
+            </div>
+            <div id="chatMessages" class="chat-messages">
+                <div class="msg bot">Hello! I'm your intelligent advisor. Ask me questions like: "If I take a 3-day sick leave starting tomorrow, will my Physics attendance drop below 75%?"</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask a question..." autocomplete="off">
+                <button id="chatSend">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

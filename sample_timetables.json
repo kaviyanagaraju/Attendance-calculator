@@ -1,0 +1,20 @@
+{
+  "Section A": {
+    "Mathematics": ["Monday", "Wednesday", "Friday"],
+    "Physics": ["Tuesday", "Thursday"],
+    "Computer Science": ["Monday", "Tuesday", "Wednesday"],
+    "English": ["Thursday", "Friday"]
+  },
+  "Section B": {
+    "Mathematics": ["Tuesday", "Thursday", "Friday"],
+    "Physics": ["Monday", "Wednesday"],
+    "Computer Science": ["Wednesday", "Thursday", "Friday"],
+    "English": ["Monday", "Tuesday"]
+  },
+  "Section C": {
+    "Machine Learning": ["Monday", "Wednesday", "Friday"],
+    "Data Structures": ["Tuesday", "Thursday"],
+    "Algorithms": ["Monday", "Tuesday"],
+    "Web Development": ["Wednesday", "Friday"]
+  }
+}
